@@ -14,7 +14,9 @@ document.getElementById("verifyButton").onclick = async () => {
   try {
     // Fazer a requisição para o servidor
     const response = await fetch(
-      `/api/verificar?url=${encodeURIComponent(url)}`
+      `https://simple-request.onrender.com/api/verificar?url=${encodeURIComponent(
+        url
+      )}`
     );
     console.log("Resposta recebida do servidor:", response);
 
