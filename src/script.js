@@ -14,10 +14,10 @@ document.getElementById("verifyButton").onclick = async () => {
   vtexStatusEl.textContent = "VTEX IO: ";
 
   try {
-    // Fazer a requisição para o servidor
     const response = await fetch(
       `https://sz-checker.onrender.com/search?url=${encodeURIComponent(url)}`
     );
+
     console.log("Resposta recebida do servidor:", response);
 
     // Verificar se a resposta foi bem-sucedida

@@ -61,6 +61,7 @@ body {
   transition: background-color 0.3s;
   margin-top: 15px;
   box-shadow: rgba(0, 0, 0, 0.16) 2px 2px 2px;
+  width: 30%;
 }
 
 .btn:hover {
