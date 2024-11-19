@@ -2,14 +2,16 @@ document.getElementById("verifyButton").onclick = async () => {
   const url = document.getElementById("urlInput").value;
   const messageEl = document.getElementById("message");
   const permalinkEl = document.getElementById("permalink");
-  const resultsEl = document.getElementById("results");
-  const deploymentStatusEl = document.getElementById("deploymentStatus");
+  const scriptStatusEl = document.querySelector("#results ul li:nth-child(1)");
+  const gtmStatusEl = document.querySelector("#results ul li:nth-child(2)");
+  const vtexStatusEl = document.querySelector("#results ul li:nth-child(3)");
 
   // Resetar os conteúdos das mensagens e resultados
   messageEl.textContent = "Verificando...";
-  resultsEl.innerHTML = "";
   permalinkEl.innerHTML = "";
-  deploymentStatusEl.innerHTML = "";
+  scriptStatusEl.textContent = "Script: ";
+  gtmStatusEl.textContent = "GTM: ";
+  vtexStatusEl.textContent = "VTEX IO: ";
 
   try {
     // Fazer a requisição para o servidor
@@ -33,20 +35,10 @@ document.getElementById("verifyButton").onclick = async () => {
       permalinkEl.innerHTML = `<strong>Permalink encontrado:</strong> <a href="${data.permalink}" target="_blank" rel="noopener noreferrer">${data.permalink}</a>`;
     }
 
-    // Filtrar e exibir apenas requisições que contenham "sizebay"
-    const filteredRequests = data.requisitions.filter((req) =>
-      req.url.includes("sizebay")
-    );
-
-    // Exibir status de implantação (Script, GTM, VTEX IO)
-    deploymentStatusEl.innerHTML = `
-      <h3>Status de Implantação:</h3>
-      <ul>
-        <li>Script: ${data.scriptStatus ? "✅" : "❌"}</li>
-        <li>GTM: ${data.gtmStatus ? "✅" : "❌"}</li>
-        <li>VTEX IO: ${data.vtexIOStatus ? "✅" : "❌"}</li>
-      </ul>
-    `;
+    // Atualizar os status diretamente nos elementos do HTML
+    scriptStatusEl.innerHTML += data.scriptStatus ? "✅" : "❌";
+    gtmStatusEl.innerHTML += data.gtmStatus ? "✅" : "❌";
+    vtexStatusEl.innerHTML += data.vtexIOStatus ? "✅" : "❌";
   } catch (error) {
     // Exibir mensagem de erro
     messageEl.textContent = error.message || "Ocorreu um erro.";

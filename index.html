@@ -2,20 +2,40 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Verificador de URL</title>
-    <link rel="stylesheet" href="styles.css" />
-    <!-- Certifique-se de que o styles.css está no mesmo diretório -->
+    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <h1>Verificador de URL</h1>
-    <input type="text" id="urlInput" placeholder="Insira a URL" />
-    <button id="verifyButton">Verificar</button>
-    <div id="message"></div>
-    <div id="permalink"></div>
-    <div id="results"></div>
-    <div id="deploymentStatus"></div>
+    <div class="main-container">
+      <img
+        class="logo"
+        src="https://newmy.sizebay.technology/_next/image?url=%2Flogo-secondary.svg&w=384&q=75"
+        alt="logo-sizebay"
+      />
+      <h1 class="main-title">Verificador de lojas</h1>
+      <div class="input-container">
+        <input
+          type="text"
+          id="urlInput"
+          class="input-field"
+          placeholder="Insira a URL"
+        />
+        <button id="verifyButton" class="btn">Verificar</button>
+      </div>
+      <div id="message" class="message"></div>
+      <div id="permalink" class="permalink"></div>
+      <div id="results" class="results">
+        <h3>Status de Implantação:</h3>
+        <ul>
+          <li>GTM:</li>
+          <li>SCRIPT:</li>
+          <li>VTEX IO:</li>
+        </ul>
+      </div>
+      <div id="deploymentStatus" class="deployment-status"></div>
+    </div>
 
     <script src="./src/script.js"></script>
-    <!-- Referência ao script.js -->
   </body>
 </html>
